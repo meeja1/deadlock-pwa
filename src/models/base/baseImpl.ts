@@ -3,7 +3,7 @@ import { getHash } from '@/utils/getHash'
 export abstract class BaseImpl {
   protected _id: string = ''
 
-  constructor(
+  protected constructor(
     protected _order: number,
     protected _name: string,
   ) {}
@@ -12,23 +12,23 @@ export abstract class BaseImpl {
     this._id = getHash(data)
   };
 
-  get order(): number {
+  public get order(): number {
     return this._order
   }
 
-  set order(v: number) {
+  public set order(v: number) {
     this._order = v
   }
 
-  get name(): string {
+  public get name(): string {
     return this._name
   }
 
-  set name(v: string) {
+  public set name(v: string) {
     this._name = v
   }
 
-  get id(): string {
+  public get id(): string {
     return this._id
   }
 }

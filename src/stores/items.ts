@@ -13,7 +13,7 @@ export const useItemsStore = defineStore('items', () => {
   const getItemsByType = (type?: TItemSlotType) => {
     if (!type)
       return
-    return items.value.filter(item => item.type === type)
+    return items.value.filter((item: IItem['type']) => item.type === type)
   }
 
   return {

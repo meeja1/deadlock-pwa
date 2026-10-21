@@ -1,4 +1,4 @@
-import type { IItem, TItemSlotType } from '@/types/IItem'
+import type { IItem, TItemSlotType } from '@/models/Item/types'
 
 export class ItemImpl implements IItem {
   constructor(

@@ -1,4 +1,4 @@
-import type { IItem } from '@/types/IItem'
+import type { IItem, ItemDTO } from '@/models/Item/types'
 import { itemSlotType } from '@/constants/itemSlotType'
 import { ItemImpl } from '@/models/Item/itemImpl'
 import { httpService } from '@/services/httpService/httpService'
@@ -11,7 +11,7 @@ export class ItemsService {
       [spiritItems, spiritError],
     ] = await Promise.all(
       Object.values(itemSlotType).map(slotType =>
-        httpService.get<IItem>(`/items/by-slot-type/${slotType}`),
+        httpService.get<ItemDTO[]>(`/items/by-slot-type/${slotType}`),
       ),
     )
     const errors = [weaponError, vitalityError, spiritError].filter(Boolean)
@@ -19,8 +19,8 @@ export class ItemsService {
       console.error(errors)
       return []
     }
-    return [...weaponItems, ...vitalityItems, ...spiritItems]
-      .filter(el => el.shopable)
+    return [...weaponItems ?? '', ...vitalityItems ?? '', ...spiritItems ?? '']
+      .filter(el => typeof el !== 'string' && 'shopable' in el)
       .map(el => new ItemImpl(
         el.id,
         el.name,

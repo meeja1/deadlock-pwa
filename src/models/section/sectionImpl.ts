@@ -9,14 +9,14 @@ export class SectionImpl extends BaseImpl implements IBuildSection {
   ) {
     super(_order, _name)
 
-    this.createId({
-      name: this._name,
-      order: this._order,
-      items: this._items,
+    super.createId({
+      name: _name,
+      order: _order,
+      items: _items,
     })
   }
 
-  get items() {
+  public get items() {
     return this._items
   }
 }

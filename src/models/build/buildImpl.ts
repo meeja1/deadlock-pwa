@@ -15,29 +15,29 @@ export class BuildImpl extends BaseImpl implements IBuild {
     protected _isEdit: boolean = true,
   ) {
     super(_order, _name)
-    this.createId({
+    super.createId({
       name: this._name,
       sections: this._sections,
     })
   }
 
-  get name(): string {
+  public get name(): string {
     return this._name
   }
 
-  get sections(): IBuildSection[] {
+  public get sections(): IBuildSection[] {
     return this._sections
   }
 
-  set sections(v: IBuildSection[]) {
+  public set sections(v: IBuildSection[]) {
     this._sections = v
   }
 
-  get isEdit() {
+  public get isEdit() {
     return this._isEdit
   }
 
-  set isEdit(v: boolean) {
+  public set isEdit(v: boolean) {
     this._isEdit = v
   }
 }
